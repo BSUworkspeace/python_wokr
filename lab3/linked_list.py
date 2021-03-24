@@ -24,17 +24,21 @@ class Node ( object ):
         return self._next
 
     def __iter__(self):
-        print(11111111111,self.value,self._next)
+        print("the value is:",self.value,"             the next value is:",self._next)
         try:
             return iter(self._next)
         except:
-            return
+            return None
 
 
 
 def flatten_linked_list(node):
-    x = iter(node)
-
+    while 1:
+        try:
+            x = iter(node)
+            x.value
+        except TypeError:
+            break
     # print(node.value,node.next_)
 if __name__ == '__main__':
 
