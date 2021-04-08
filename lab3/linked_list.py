@@ -21,12 +21,13 @@ class linked_list(object):
         self.node = node
 
     @property
-    def _value(self):
+    def value(self):
         return self.node._value
 
     @property
-    def _next(self):
+    def next_(self):
         return self.node._next
+
 
     def __iter__(self):
         # yield self._value
@@ -35,10 +36,12 @@ class linked_list(object):
         #     yield current._value
         #     current = current._next
         # # yield self._value
-        current = self._next
-        if current is not None:
-            yield from iter(current._next)
-            current = current._next
+        current = self.node
+        if isinstance(current._next, Node):
+            yield current._value
+            yield from linked_list(current._next)
+        else:
+            yield current._value
 
 
 def flatten_linked_list( node):
@@ -47,6 +50,7 @@ def flatten_linked_list( node):
     
     link_list= []
     for i in linked_list(node):
+        print(i)
         if isinstance(i, int):
             link_list.append(i)
         else:
