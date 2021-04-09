@@ -30,12 +30,6 @@ class linked_list(object):
 
 
     def __iter__(self):
-        # yield self._value
-        # current = self._next
-        # while current is not None:
-        #     yield current._value
-        #     current = current._next
-        # # yield self._value
         current = self.node
         if isinstance(current._next, Node):
             yield current._value
@@ -45,25 +39,23 @@ class linked_list(object):
 
 
 def flatten_linked_list( node):
-    
-    
-    
     link_list= []
     for i in linked_list(node):
-        print(i)
-        if isinstance(i, int):
+        if not isinstance(i, Node):
             link_list.append(i)
         else:
             [link_list.append(i) for i in linked_list(i)]
+            # flatten_linked_list(i)
+    print(link_list)
     return link_list
 
 if __name__ == '__main__':
     # r1 = Node ( 1 ) # 1 -> None - just one node
     r2 = Node(7, Node(2, Node(9)))  # 7 -> 2 -> 9 -> None
     print(flatten_linked_list(r2))
-    # # 3 -> (19 -> 25 -> None ) -> 12 -> None
-    # r3 = Node(3, Node(Node(19, Node(25)), Node(12)))
-    # r3_flattenned = flatten_linked_list(r3)  # 3 -> 19 -> 25 -> 12 -> None
-    # r3_expected_flattenned_collection = [3, 19, 25, 12]
-    # # print(list( r3_flattenned ))
-    # assert r3_expected_flattenned_collection == list(r3_flattenned)
+    # 3 -> (19 -> 25 -> None ) -> 12 -> None
+    r3 = Node(3, Node(Node(19, Node(25)), Node(12)))
+    r3_flattenned = flatten_linked_list(r3)  # 3 -> 19 -> 25 -> 12 -> None
+    r3_expected_flattenned_collection = [3, 19, 25, 12]
+    # print(list( r3_flattenned ))
+    assert r3_expected_flattenned_collection == list(r3_flattenned)
