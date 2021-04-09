@@ -44,9 +44,9 @@ def flatten_linked_list( node):
         if not isinstance(i, Node):
             link_list.append(i)
         else:
-            [link_list.append(i) for i in linked_list(i)]
-            # flatten_linked_list(i)
-    print(link_list)
+            # [link_list.append(i) for i in linked_list(i)]
+            a= flatten_linked_list(i)
+            link_list =link_list+a
     return link_list
 
 if __name__ == '__main__':
