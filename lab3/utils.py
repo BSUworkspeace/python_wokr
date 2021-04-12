@@ -22,17 +22,23 @@ def profile(func):
     return running
 
 
-@profile
-def some_function ():
-    return sum( range ( 1000 ) )
-result = some_function () #
+
 
 class timer():
         def __enter__(self):
             self.starttime = timeit.default_timer()
             print("the start time is :", self.starttime)
         def __exit__(self, type, value, trace):
-            print("running time is :", timeit.default_timer() - self.starttime)
+            print("running time is :", timeit.default_timer() - self.starttime)\
 
-with timer ():
-    print ( sum ( range ( 1000 ) ) )
+
+if __name__ == '__main__':
+
+
+    @profile
+    def some_function ():
+        return sum( range ( 1000 ) )
+    result = some_function () #
+
+    with timer ():
+        print ( sum ( range ( 1000 ) ) )
