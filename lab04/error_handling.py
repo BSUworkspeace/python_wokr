@@ -21,7 +21,6 @@ def handle_error(re_raise=True,log_traceback=True,exc_type=(Exception),tries:int
                 exc_tuple = sys.exc_info()
             if re_raise or (exc_tuple[0] not in [exc_type]):
                 while loop_number>0:
-
                     try:
                         return func(*args, **kwargs)
                     except exc_type:
