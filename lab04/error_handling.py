@@ -25,13 +25,10 @@ def handle_error(re_raise=True,log_traceback=True,exc_type=(Exception),tries:int
                     try:
                         return func(*args, **kwargs)
                     except exc_type:
-
-
                             if log_traceback:
                                 exc_trace = sys.exc_info()[2]
                                 formatted_traceback = ''.join(traceback.format_tb(exc_trace))
                                 print(formatted_traceback)
-
                     loop_number= loop_number-1
                     time.sleep(delay*backoff)
         return wrapper
