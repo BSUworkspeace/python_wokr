@@ -8,13 +8,13 @@
 @desc:
 '''
 def get_nearest_lucky_ticket(number:int)->int:
-        def loop1(number:int):
+        def loop1(number:int):# 寻找向左的相等奇偶性
             numberlist = [i for i in str(number)]
             evensum = sum([int(i) for i in numberlist[::2]])
             oddsum = sum([int(i) for i in numberlist[1::2]])
             if  evensum==oddsum:return number
             else:               return loop1(number - 1)
-        def loop2(number:int):
+        def loop2(number:int):# 寻找向右的相等奇偶性
             numberlist = [i for i in str(number)]
             evensum = sum([int(i) for i in numberlist[::2]])
             oddsum = sum([int(i) for i in numberlist[1::2]])
